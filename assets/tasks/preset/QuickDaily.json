@@ -9,14 +9,14 @@
                     "name": "Shop",
                     "option": {
                         "CommonShopFreeGoods": "Yes",
-                        "CommonShopCoreDustCase": "No",
+                        "CommonShopCoreDustCase": "Yes",
                         "RecyclingShopList": ["Gem"]
                     }
                 },
                 {
                     "name": "SimulationRoom",
                     "option": {
-                        "BeginSimulation": "No",
+                        "BeginSimulation": "Yes",
                         "StartOverlock": "Yes",
                         "AutoBIOSSetting": "Yes"
                     }
