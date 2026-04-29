@@ -56,6 +56,28 @@
             }
         },
         "next": [
+            "[JumpBack]EmailRedDot",
+            "[JumpBack]RewardConfirm",
+            "PageClose"
+        ]
+    },
+    "EmailRedDot": {
+        "desc": "邮箱内部的的红点，代表有未领取的奖励",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    778,
+                    231,
+                    24,
+                    20
+                ],
+                "template": [
+                    "RedDot.png"
+                ]
+            }
+        },
+        "next": [
             "EmailClaim"
         ]
     },
@@ -78,10 +100,6 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 1500,
-        "next": [
-            "[JumpBack]RewardConfirm",
-            "PageClose"
-        ]
+        "post_wait_freezes": 1500
     }
 }
