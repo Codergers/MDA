@@ -106,5 +106,8 @@
     "option.LargeEventContent.LargeEventLoginStamp": "Login Stamp",
     "option.LargeEventContent.LargeEventChallenge": "Challenge",
     "option.LargeEventContent.LargeEventStory": "Story",
-    "option.LargeEventContent.LargeEventMission": "Mission"
+    "option.LargeEventContent.LargeEventMission": "Mission",
+    "option.LargeEventStoryPriority.label": "Event Story Priority",
+    "option.LargeEventStoryPriority.Story2First": "STORY2 First",
+    "option.LargeEventStoryPriority.Story1First": "STORY1 First"
 }

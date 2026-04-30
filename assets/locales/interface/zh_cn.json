@@ -106,5 +106,8 @@
     "option.LargeEventContent.LargeEventLoginStamp": "大活动签到",
     "option.LargeEventContent.LargeEventChallenge": "大活动挑战",
     "option.LargeEventContent.LargeEventStory": "大活动剧情",
-    "option.LargeEventContent.LargeEventMission": "大活动任务"
+    "option.LargeEventContent.LargeEventMission": "大活动任务",
+    "option.LargeEventStoryPriority.label": "活动剧情优先级",
+    "option.LargeEventStoryPriority.Story2First": "STORY2优先",
+    "option.LargeEventStoryPriority.Story1First": "STORY1优先"
 }

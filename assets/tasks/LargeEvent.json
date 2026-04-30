@@ -19,8 +19,9 @@
                     "enabled": false
                 }
             },
-            "option": [
+"option": [
                 "LargeEventTheme",
+                "LargeEventStoryPriority",
                 "LargeEventContent"
             ],
             "group": [
@@ -103,6 +104,41 @@
                             "enabled": true
                         }
                     }
+                }
+            ]
+        },
+        "LargeEventStoryPriority": {
+            "type": "select",
+            "default_case": "Story2First",
+            "label": "$option.LargeEventStoryPriority.label",
+            "cases": [
+                {
+                    "name": "Story2First",
+                    "label": "$option.LargeEventStoryPriority.Story2First",
+                    "pipeline_override": {
+                        "LargeEventStory": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        442,
+                                        536,
+                                        393,
+                                        79
+                                    ],
+                                    "expected": [
+                                        ".*STORY.*"
+                                    ],
+                                    "order_by": "Vertical",
+                                    "index": -1
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Story1First",
+                    "label": "$option.LargeEventStoryPriority.Story1First"
                 }
             ]
         }

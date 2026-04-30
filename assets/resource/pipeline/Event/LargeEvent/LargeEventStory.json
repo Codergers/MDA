@@ -14,7 +14,8 @@
                 ],
                 "expected": [
                     ".*STORY.*"
-                ]
+                ],
+                "order_by": "Vertical"
             }
         },
         "action": {
