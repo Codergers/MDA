@@ -23,6 +23,36 @@ LANG_MAP = {
     "zh_tw": "zh_cn",
 }
 
+
+def configure_utf8_stdio() -> None:
+    """Keep Python CLI output readable in Windows terminals using UTF-8 files."""
+    if platform.system() != "Windows":
+        return
+
+    os.environ.setdefault("PYTHONUTF8", "1")
+    os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+
+    for stream_name in ("stdin", "stdout", "stderr"):
+        stream = getattr(sys, stream_name, None)
+        if hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except Exception:
+                pass
+
+    try:
+        import ctypes
+
+        kernel32 = ctypes.windll.kernel32
+        kernel32.SetConsoleCP(65001)
+        kernel32.SetConsoleOutputCP(65001)
+    except Exception:
+        pass
+
+
+configure_utf8_stdio()
+
+
 def _enable_windows_virtual_terminal() -> bool:
     if platform.system() != "Windows":
         return False

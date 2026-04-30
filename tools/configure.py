@@ -2,6 +2,14 @@ from pathlib import Path
 
 import shutil
 
+try:
+    from cli_support import configure_utf8_stdio
+except ImportError:
+    configure_utf8_stdio = None
+
+if configure_utf8_stdio:
+    configure_utf8_stdio()
+
 assets_dir = Path(__file__).parent.parent.resolve() / "assets"
 
 

@@ -17,6 +17,14 @@ except ModuleNotFoundError as e:
 
 from configure import configure_ocr_model
 
+try:
+    from cli_support import configure_utf8_stdio
+except ImportError:
+    configure_utf8_stdio = None
+
+if configure_utf8_stdio:
+    configure_utf8_stdio()
+
 
 working_dir = Path(__file__).parent.parent.resolve()
 install_path = working_dir / Path("install")

@@ -4,6 +4,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+TOOLS_DIR = Path(__file__).resolve().parents[1]
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
+
+from cli_support import configure_utf8_stdio
+
+configure_utf8_stdio()
+
 
 def find_png_images(root_dir: str = "assets") -> list[Path]:
     """Find all PNG images under the given root directory."""
@@ -30,6 +38,8 @@ def optimize_image(image_path: Path) -> bool:
             check=True,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
     except subprocess.CalledProcessError as e:
         print(f"Error optimizing {image_path}: {e.stderr}", file=sys.stderr)

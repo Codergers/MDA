@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "utf8-cmd": "scripts\\utf8-cmd.cmd",
         "format": "node scripts/clean-empty-pipeline-fields.mjs && prettier --write ."
     },
     "devDependencies": {

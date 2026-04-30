@@ -38,9 +38,11 @@ def create_directory_link(src: Path, dst: Path) -> bool:
 
     if platform.system() == "Windows":
         result = subprocess.run(
-            ["cmd", "/c", "mklink", "/J", str(dst), str(src)],
+            ["cmd", "/d", "/c", f'chcp 65001 >nul && mklink /J "{dst}" "{src}"'],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
         if result.returncode != 0:
             print(Console.err(t("err_create_junction_failed", stderr=result.stderr)))

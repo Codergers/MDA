@@ -47,9 +47,11 @@ def create_directory_link(src: Path, dst: Path) -> bool:
 
     if platform.system() == "Windows":
         result = subprocess.run(
-            ["cmd", "/c", "mklink", "/J", str(dst), str(src)],
+            ["cmd", "/d", "/c", f'chcp 65001 >nul && mklink /J "{dst}" "{src}"'],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
         if result.returncode != 0:
             print(
@@ -71,15 +73,19 @@ def create_file_link(src: Path, dst: Path) -> bool:
 
     if platform.system() == "Windows":
         result = subprocess.run(
-            ["cmd", "/c", "mklink", "/H", str(dst), str(src)],
+            ["cmd", "/d", "/c", f'chcp 65001 >nul && mklink /H "{dst}" "{src}"'],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
         if result.returncode != 0:
             result = subprocess.run(
-                ["cmd", "/c", "mklink", str(dst), str(src)],
+                ["cmd", "/d", "/c", f'chcp 65001 >nul && mklink "{dst}" "{src}"'],
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
             )
             if result.returncode != 0:
                 print(
@@ -117,6 +123,8 @@ def check_go_environment() -> bool:
             ["go", "version"],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
         if result.returncode == 0:
             print(f"  {Console.info(t('go_version'))}: {result.stdout.strip()}")
