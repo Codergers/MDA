@@ -1,7 +1,8 @@
 {
     "scripts": {
         "utf8-cmd": "scripts\\utf8-cmd.cmd",
-        "format": "node scripts/clean-empty-pipeline-fields.mjs && prettier --write ."
+        "format": "node scripts/clean-empty-pipeline-fields.mjs && prettier --write .",
+        "test": "maa-tools test"
     },
     "devDependencies": {
         "@biomejs/biome": "2.4.13",
