@@ -18,13 +18,6 @@ var _ maa.CustomActionRunner = &MembershipCheckAction{}
 func (a *MembershipCheckAction) Run(ctx *maa.Context, arg *maa.CustomActionArg) bool {
 	entry := arg.CurrentTaskName
 
-	LoadMemberOnlyEntries()
-
-	if !IsMemberOnly(entry) {
-		log.Debug().Str("entry", entry).Msg("MembershipCheck: task is free, allowing")
-		return true
-	}
-
 	status := GetMembershipStatus()
 
 	if status.UnsupportedTier {
@@ -41,7 +34,7 @@ func (a *MembershipCheckAction) Run(ctx *maa.Context, arg *maa.CustomActionArg) 
 			Msg("MembershipCheck: member verified, allowing")
 		maafocus.Print(ctx, fmt.Sprintf(
 			i18n.T("tasker.membership_check.verified"),
-			entry, status.MembershipType, status.VirtualExpiry,
+			status.MembershipType, status.VirtualExpiry,
 		))
 		return true
 	}
@@ -57,7 +50,7 @@ func (a *MembershipCheckAction) Run(ctx *maa.Context, arg *maa.CustomActionArg) 
 	)
 	maafocus.Print(ctx, fmt.Sprintf(
 		i18n.T("tasker.membership_check.denied"),
-		entry, sponsorURL,
+		sponsorURL,
 	))
 	maafocus.PrintLargeContentTrimNewline(
 		i18n.RenderHTML("tasker.membership_warning", buildWarningData(status, entry)),

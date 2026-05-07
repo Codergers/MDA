@@ -21,6 +21,6 @@
     "tasker.membership_warning.requirement": "要求：金Doro会员",
     "tasker.membership_warning.tier_free": "普通用户",
     "tasker.membership_warning.tip": "💡 赞助后即可解锁所有会员任务",
-    "tasker.membership_check.verified": "🍊 [%s] 会员专属任务认证通过 (%s，有效期至 %s)",
-    "tasker.membership_check.denied": "🍊 [%s] 会员专属任务 - 非会员，任务已停止。赞助地址: %s"
+    "tasker.membership_check.verified": "🍊 会员专属任务认证通过 (%s，有效期至 %s)",
+    "tasker.membership_check.denied": "🍊 会员专属任务 - 非会员，任务已停止。赞助地址: %s"
 }

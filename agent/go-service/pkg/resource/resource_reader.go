@@ -76,7 +76,7 @@ func FindResource(relativePath string) string {
 	rel := strings.TrimPrefix(rawPath, string(filepath.Separator))
 
 	findPath := func(rel string) string {
-		if base := getResourceBase(); base != "" {
+		if base := GetResourceBase(); base != "" {
 			base = filepath.Clean(base)
 			if found := tryPath(filepath.Join(base, rel)); found != "" {
 				return found

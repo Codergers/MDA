@@ -38,8 +38,8 @@ func (c *resourcePathSink) OnResourceLoading(resource *maa.Resource, status maa.
 	log.Debug().Str("absPath", absPath).Msg("Resource path sink captured resource path")
 }
 
-// getResourceBase returns the cached resource base path or an empty string if unavailable.
-func getResourceBase() string {
+// GetResourceBase returns the cached resource base path or an empty string if unavailable.
+func GetResourceBase() string {
 	if v := resourcePath.Load(); v != nil {
 		if s, ok := v.(string); ok && s != "" {
 			return s
