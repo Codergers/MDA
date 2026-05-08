@@ -103,7 +103,7 @@
         "tasks/Interception.json",
         "tasks/Outpost.json",
         "tasks/Advise.json",
-        "tasks/Cooperation.json",
+        "tasks/CoordinatedOperations.json",
         "tasks/DailyRewards.json",
         "tasks/LargeEvent.json",
         "tasks/preset/DailyFull.json",
