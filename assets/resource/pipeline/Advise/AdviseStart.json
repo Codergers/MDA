@@ -117,6 +117,7 @@
             "[JumpBack]AdviseRemoveFavorites",
             "[JumpBack]AdviseConfirmAction",
             "[JumpBack]AdviseConfirmRankIncrease",
+            "[JumpBack]AdviseBondIncreasedVisible",
             "[JumpBack]AdviseEpisodeReward",
             "AdviseNextAdvise"
         ]
@@ -175,6 +176,23 @@
         },
         "action": {
             "type": "Click"
+        }
+    },
+    "AdviseBondIncreasedVisible": {
+        "desc": "好感度提升的标识",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    593,
+                    351,
+                    96,
+                    19
+                ],
+                "expected": [
+                    ".*好感度提升.*"
+                ]
+            }
         }
     },
     "AdviseNextAdvise": {
