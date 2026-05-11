@@ -44,7 +44,9 @@
             "type": "Click"
         },
         "next": [
-            "LargeEventStarAnisPlayMerchLotteryClick"
+            "LargeEventStarAnisPlayMerchLotteryClick",
+            "LargeEventStarAnisMerchLotteryClick",
+            "LargeEventStarAnisLotteryComplete"
         ]
     },
     "LargeEventStarAnisMerchGachaClick": {
@@ -96,7 +98,8 @@
         "repeat_delay": 500,
         "next": [
             "LargeEventStarAnisMerchLotteryClick",
-            "LargeEventStarAnisPlayMerchLotteryClick"
+            "LargeEventStarAnisPlayMerchLotteryClick",
+            "LargeEventStarAnisLotteryComplete"
         ]
     },
     "LargeEventStarAnisLotteryComplete": {
