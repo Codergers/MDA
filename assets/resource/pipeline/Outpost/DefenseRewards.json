@@ -55,6 +55,7 @@
             "[JumpBack]OutpostWipeOut",
             "[JumpBack]CommonConfirmReward",
             "OutpostMainPageEntered",
+            "[JumpBack]CommonClosePage",
             "[JumpBack]CommonGoBack"
         ]
     },
