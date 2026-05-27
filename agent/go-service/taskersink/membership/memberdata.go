@@ -63,14 +63,14 @@ type MembershipStatus struct {
 	RemainingDays int
 	IsMember      bool
 	UserID        string
-	DeviceCode    DeviceCodeV6
+	DeviceCode    DeviceCodeV7
 }
 
 var (
 	cachedStatus     *MembershipStatus
 	cachedStatusMu   sync.RWMutex
 	cachedStatusTime time.Time
-	cachedDeviceCode DeviceCodeV6
+	cachedDeviceCode DeviceCodeV7
 )
 
 const (
@@ -94,7 +94,7 @@ func GetMembershipStatus() *MembershipStatus {
 
 // checkMembership performs the full membership check flow.
 func checkMembership() *MembershipStatus {
-	deviceCode := GenerateDeviceCodeV6()
+	deviceCode := GenerateDeviceCodeV7()
 	cachedDeviceCode = deviceCode
 
 	defaultStatus := &MembershipStatus{
@@ -121,7 +121,7 @@ func checkMembership() *MembershipStatus {
 	log.Info().
 		Str("cpu_hash", shortHash(deviceCode.CPUHash)).
 		Str("uuid_hash", shortHash(deviceCode.UUIDHash)).
-		Msg("Generated V6 device code")
+		Msg("Generated V7 device code")
 
 	response, err := fetchMemberStatus(deviceCode)
 	if err != nil {
@@ -162,7 +162,7 @@ func cacheStatus(status *MembershipStatus) {
 	cachedStatusMu.Unlock()
 }
 
-func statusFromResponse(response *MemberStatusResponse, deviceCode DeviceCodeV6) *MembershipStatus {
+func statusFromResponse(response *MemberStatusResponse, deviceCode DeviceCodeV7) *MembershipStatus {
 	tier := response.Tier
 	if tier == "" {
 		tier = "普通用户"
@@ -181,7 +181,7 @@ func statusFromResponse(response *MemberStatusResponse, deviceCode DeviceCodeV6)
 	}
 }
 
-func fetchMemberStatus(deviceCode DeviceCodeV6) (*MemberStatusResponse, error) {
+func fetchMemberStatus(deviceCode DeviceCodeV7) (*MemberStatusResponse, error) {
 	client := &http.Client{Timeout: httpTimeout}
 	payload, err := json.Marshal(deviceCode)
 	if err != nil {
