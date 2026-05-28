@@ -52,6 +52,10 @@ func isVSCodeClient() bool {
 	return strings.EqualFold(clientName, "VsCode")
 }
 
+func isDebugEnvironment() bool {
+	return isDebugVersion() || isVSCodeClient()
+}
+
 type MemberStatusResponse struct {
 	Matched             bool   `json:"matched"`
 	Score               int    `json:"score"`
@@ -120,21 +124,7 @@ func RefreshMembershipStatus() *MembershipStatus {
 
 // checkMembership performs the full membership check flow.
 func checkMembership() *MembershipStatus {
-	deviceCode := GenerateDeviceCodeV7()
-	cachedDeviceCode = deviceCode
-
-	defaultStatus := &MembershipStatus{
-		Tier:                "Orange Free",
-		TierCode:            "orange_free",
-		TierName:            "Orange Free",
-		PlanName:            "Orange Free",
-		DailyRuntimeMinutes: 10,
-		AllFeaturesUnlocked: true,
-		IsMember:            false,
-		DeviceCode:          deviceCode,
-	}
-
-	if isDebugVersion() || isVSCodeClient() {
+	if isDebugEnvironment() {
 		log.Info().
 			Str("version", appVersion).
 			Str("client_name", clientName).
@@ -151,8 +141,21 @@ func checkMembership() *MembershipStatus {
 			AllFeaturesUnlocked: true,
 			UnlimitedRuntime:    true,
 			IsMember:            true,
-			DeviceCode:          deviceCode,
 		}
+	}
+
+	deviceCode := GenerateDeviceCodeV7()
+	cachedDeviceCode = deviceCode
+
+	defaultStatus := &MembershipStatus{
+		Tier:                "Orange Free",
+		TierCode:            "orange_free",
+		TierName:            "Orange Free",
+		PlanName:            "Orange Free",
+		DailyRuntimeMinutes: 10,
+		AllFeaturesUnlocked: true,
+		IsMember:            false,
+		DeviceCode:          deviceCode,
 	}
 
 	log.Info().

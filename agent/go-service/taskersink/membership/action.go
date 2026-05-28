@@ -30,6 +30,10 @@ func (a *RuntimeQuotaCheckAction) Run(ctx *maa.Context, arg *maa.CustomActionArg
 }
 
 func runRuntimeQuotaCheck(ctx *maa.Context) bool {
+	if isDebugEnvironment() {
+		return true
+	}
+
 	status := RefreshMembershipStatus()
 	snapshot, ok, err := EnsureQuotaAvailable(status)
 	if err != nil {
