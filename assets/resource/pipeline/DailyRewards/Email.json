@@ -3,11 +3,11 @@
         "desc": "邮箱入口",
         "max_hit": 1,
         "next": [
-            "DailyRewardsEmailStart",
+            "DailyRewardsEnterEmail",
             "CommonEndTask"
         ]
     },
-    "DailyRewardsEmailStart": {
+    "DailyRewardsEnterEmail": {
         "desc": "邮箱入口",
         "recognition": {
             "type": "TemplateMatch",
@@ -37,7 +37,7 @@
         "post_wait_freezes": 500,
         "next": [
             "DailyRewardsEmailFlow",
-            "DailyRewardsEmailStart"
+            "DailyRewardsEnterEmail"
         ]
     },
     "DailyRewardsEmailVisible": {
@@ -68,7 +68,7 @@
             }
         },
         "next": [
-            "[JumpBack]DailyRewardsHandleEmailRedDot",
+            "[JumpBack]DailyRewardsEmailRedDotFlow",
             "[JumpBack]CommonConfirmReward",
             "CommonClosePage"
         ]
@@ -90,7 +90,7 @@
             }
         }
     },
-    "DailyRewardsHandleEmailRedDot": {
+    "DailyRewardsEmailRedDotFlow": {
         "desc": "处理邮箱红点",
         "recognition": {
             "type": "And",

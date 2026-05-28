@@ -4,7 +4,7 @@
         "max_hit": 1,
         "next": [
             "DailyRewardsFreeRecruitEntry",
-            "[JumpBack]NavigationEnterHall"
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
     "DailyRewardsFreeRecruitEntry": {
@@ -18,11 +18,11 @@
             }
         },
         "next": [
-            "DailyRewardsFreeRecruitStart",
+            "DailyRewardsEnterFreeRecruit",
             "CommonEndTask"
         ]
     },
-    "DailyRewardsFreeRecruitStart": {
+    "DailyRewardsEnterFreeRecruit": {
         "desc": "免费招募",
         "recognition": {
             "type": "And",
@@ -37,8 +37,8 @@
         },
         "post_wait_freezes": 1000,
         "next": [
-            "[JumpBack]DailyRewardsFreeRecruit",
-            "NavigationEnterHall"
+            "[JumpBack]DailyRewardsFreeRecruitFlow",
+            "NavigationReturnHallFlow"
         ]
     },
     "DailyRewardsFreeRecruitAvailable": {
@@ -52,7 +52,7 @@
             }
         }
     },
-    "DailyRewardsFreeRecruit": {
+    "DailyRewardsFreeRecruitFlow": {
         "desc": "处理免费招募可用",
         "recognition": {
             "type": "And",

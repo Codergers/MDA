@@ -9,11 +9,11 @@
             }
         },
         "next": [
-            "AdviseStart",
-            "[JumpBack]NavigationEnterHall"
+            "AdviseEntryFlow",
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
-    "AdviseStart": {
+    "AdviseEntryFlow": {
         "desc": "开始咨询总流程",
         "recognition": {
             "type": "And",

@@ -29,11 +29,11 @@
         "post_wait_freezes": 500,
         "timeout": 60000,
         "next": [
-            "[JumpBack]SmallEventChallengeStart",
+            "[JumpBack]SmallEventChallengeFlow",
             "SmallEventGoBack"
         ]
     },
-    "SmallEventChallengeStart": {
+    "SmallEventChallengeFlow": {
         "max_hit": 1,
         "next": [
             "EventChallenge"

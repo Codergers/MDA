@@ -44,7 +44,7 @@
             "type": "Click"
         },
         "next": [
-            "LargeEventStarAnisLotteryComplete",
+            "LargeEventStarAnisLotteryExhaustedFlow",
             "LargeEventStarAnisPlayMerchLotteryClick",
             "LargeEventStarAnisMerchLotteryClick"
         ]
@@ -97,19 +97,19 @@
         "repeat": 3,
         "repeat_delay": 500,
         "next": [
-            "LargeEventStarAnisLotteryComplete",
+            "LargeEventStarAnisLotteryExhaustedFlow",
             "LargeEventStarAnisMerchLotteryClick",
             "LargeEventStarAnisPlayMerchLotteryClick"
         ]
     },
-    "LargeEventStarAnisLotteryComplete": {
+    "LargeEventStarAnisLotteryExhaustedFlow": {
         "desc": "抽取次数耗尽",
         "recognition": {
             "type": "Or",
             "param": {
                 "any_of": [
                     "LargeEventStarAnisLotteryGrayButtonVisible",
-                    "LargeEventStarAnisLotteryRunOut"
+                    "LargeEventStarAnisLotteryTicketExhausted"
                 ]
             }
         },
@@ -166,7 +166,7 @@
             }
         }
     },
-    "LargeEventStarAnisLotteryRunOut": {
+    "LargeEventStarAnisLotteryTicketExhausted": {
         "desc": "抽奖券不足",
         "recognition": {
             "type": "OCR",

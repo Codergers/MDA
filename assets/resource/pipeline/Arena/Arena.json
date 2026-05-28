@@ -9,7 +9,7 @@
         "next": [
             "[JumpBack]ArenaSpecialRewardClaim",
             "ArkEnterArena",
-            "[JumpBack]HallEnterArk"
+            "[JumpBack]NavigationEnterArkFlow"
         ]
     },
     "ArenaSpecialRewardClaim": {
@@ -71,9 +71,9 @@
             "type": "Or",
             "param": {
                 "any_of": [
-                    "RookieArena",
-                    "SpecialArena",
-                    "ChampionArena"
+                    "RookieArenaVisible",
+                    "SpecialArenaVisible",
+                    "ChampionArenaVisible"
                 ]
             }
         }
@@ -149,7 +149,7 @@
         },
         "next": [
             "[JumpBack]RookieArenaClickQuickBattleToggle",
-            "BattleStart"
+            "BattleEntryFlow"
         ]
     }
 }

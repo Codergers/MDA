@@ -116,8 +116,8 @@
         },
         "next": [
             "[JumpBack]AdviseConfirmAction",
-            "[JumpBack]AdviseStory",
-            "AdviseSettlement"
+            "[JumpBack]AdviseStoryFlow",
+            "AdviseSettlementFlow"
         ]
     },
     "AdviseQuickAdvise": {
@@ -141,10 +141,10 @@
         },
         "next": [
             "[JumpBack]AdviseConfirmAction",
-            "AdviseSettlement"
+            "AdviseSettlementFlow"
         ]
     },
-    "AdviseSettlement": {
+    "AdviseSettlementFlow": {
         "desc": "咨询结算",
         "post_wait_freezes": {
             "time": 500,

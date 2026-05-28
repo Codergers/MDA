@@ -3,11 +3,11 @@
         "desc": "友情点入口",
         "max_hit": 1,
         "next": [
-            "DailyRewardsFriendPointsStart",
+            "DailyRewardsEnterFriendPoints",
             "CommonEndTask"
         ]
     },
-    "DailyRewardsFriendPointsStart": {
+    "DailyRewardsEnterFriendPoints": {
         "desc": "友情点",
         "recognition": {
             "type": "TemplateMatch",

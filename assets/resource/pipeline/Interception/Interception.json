@@ -8,7 +8,7 @@
         },
         "next": [
             "ArkEnterInterception",
-            "[JumpBack]HallEnterArk"
+            "[JumpBack]NavigationEnterArkFlow"
         ]
     },
     "ArkEnterInterception": {
@@ -76,7 +76,7 @@
             "CommonEndTask"
         ]
     },
-    "ManualInterceptionBattle": {
+    "ManualInterceptionBattleRequired": {
         "desc": "手动拦截战",
         "enabled": false,
         "recognition": {

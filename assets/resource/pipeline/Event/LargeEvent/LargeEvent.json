@@ -8,11 +8,11 @@
             }
         },
         "next": [
-            "LargeEventStart",
-            "[JumpBack]NavigationEnterHall"
+            "LargeEventHallFlow",
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
-    "LargeEventStart": {
+    "LargeEventHallFlow": {
         "desc": "大活动开始",
         "recognition": {
             "type": "And",
@@ -23,11 +23,11 @@
             }
         },
         "next": [
-            "LargeEventEntry",
+            "LargeEventEnterMainPage",
             "CommonEndTask"
         ]
     },
-    "LargeEventEntry": {
+    "LargeEventEnterMainPage": {
         "desc": "大活动入口",
         "recognition": {
             "type": "TemplateMatch",
@@ -48,7 +48,7 @@
         },
         "next": [
             "LargeEventMainPageFlow",
-            "LargeEventEntry"
+            "LargeEventEnterMainPage"
         ]
     },
     "LargeEventMainPageEntered": {

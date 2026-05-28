@@ -8,11 +8,11 @@
             }
         },
         "next": [
-            "RedDotClearStart",
-            "[JumpBack]NavigationEnterHall"
+            "RedDotClearEntryFlow",
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
-    "RedDotClearStart": {
+    "RedDotClearEntryFlow": {
         "desc": "红点清除",
         "recognition": {
             "type": "And",

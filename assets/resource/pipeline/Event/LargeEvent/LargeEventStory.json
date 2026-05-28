@@ -23,10 +23,10 @@
         },
         "timeout": 60000,
         "next": [
-            "LargeEventStoryEventPage"
+            "LargeEventOpenStoryEventStagePage"
         ]
     },
-    "LargeEventStoryEventPage": {
+    "LargeEventOpenStoryEventStagePage": {
         "desc": "大活动剧情活动页面",
         "recognition": {
             "type": "And",
@@ -162,7 +162,7 @@
             }
         },
         "next": [
-            "[JumpBack]BattleStart",
+            "[JumpBack]BattleEntryFlow",
             "LargeEventEventStagePageFlow",
             "[JumpBack]DialoguesSkipStory",
             "LargeEventGoBack"

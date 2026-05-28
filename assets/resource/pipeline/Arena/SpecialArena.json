@@ -6,7 +6,7 @@
             "type": "And",
             "param": {
                 "all_of": [
-                    "SpecialArena",
+                    "SpecialArenaVisible",
                     "SpecialArenaRedDotVisible"
                 ]
             }
@@ -68,7 +68,7 @@
             }
         }
     },
-    "SpecialArena": {
+    "SpecialArenaVisible": {
         "desc": "特殊竞技场",
         "recognition": {
             "type": "OCR",

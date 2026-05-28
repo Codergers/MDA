@@ -104,7 +104,7 @@
             }
         },
         "next": [
-            "[JumpBack]BattleStart",
+            "[JumpBack]BattleEntryFlow",
             "SmallEventEventStagePageFlow",
             "[JumpBack]DialoguesSkipStory",
             "SmallEventGoBack"

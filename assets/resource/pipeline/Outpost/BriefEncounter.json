@@ -23,7 +23,7 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "OutpostDailyLives",
+            "OutpostEnterDailyLives",
             "OutpostEnterBriefEncounter",
             "CommonEndTask"
         ]
@@ -62,7 +62,7 @@
             }
         }
     },
-    "OutpostDailyLives": {
+    "OutpostEnterDailyLives": {
         "desc": "日常状态",
         "recognition": {
             "type": "TemplateMatch",
@@ -83,10 +83,10 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "OutpostDailyEventFlow"
+            "OutpostEnterDailyEvent"
         ]
     },
-    "OutpostDailyEventFlow": {
+    "OutpostEnterDailyEvent": {
         "desc": "进入剧情",
         "recognition": {
             "type": "TemplateMatch",
@@ -111,8 +111,8 @@
             "[JumpBack]DialoguesSkipStory",
             "[JumpBack]CommonConfirmReward",
             "[JumpBack]OutpostDailyEventPageClose",
-            "BriefEncounterRepeat",
-            "OutpostDailyEventFlow"
+            "BriefEncounterRepeatFlow",
+            "OutpostEnterDailyEvent"
         ]
     },
     "OutpostDailyEventPageClose": {
@@ -135,7 +135,7 @@
             "type": "Click"
         }
     },
-    "BriefEncounterRepeat": {
+    "BriefEncounterRepeatFlow": {
         "desc": "再次执行突发活动",
         "recognition": {
             "type": "And",

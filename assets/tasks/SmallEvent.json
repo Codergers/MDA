@@ -22,7 +22,7 @@
                     "name": "BSideIdol",
                     "label": "$option.SmallEventTheme.BSideIdol",
                     "pipeline_override": {
-                        "SmallEventEntry": {
+                        "SmallEventEnterMainPage": {
                             "recognition": {
                                 "param": {
                                     "template": ["SmallEvent/B-SideIdol/B-SideIdolLogo.png"]

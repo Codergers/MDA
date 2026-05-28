@@ -9,11 +9,11 @@
             }
         },
         "next": [
-            "CoordinatedOperationsStart",
-            "[JumpBack]NavigationEnterHall"
+            "CoordinatedOperationsEntryFlow",
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
-    "CoordinatedOperationsStart": {
+    "CoordinatedOperationsEntryFlow": {
         "desc": "协同作战",
         "recognition": {
             "type": "And",
@@ -73,10 +73,10 @@
         "next": [
             "CoordinatedOperationsExhausted",
             "CoordinatedOperationsUnable",
-            "[JumpBack]CoordinatedOperationsStartMatching"
+            "[JumpBack]CoordinatedOperationsClickStartMatching"
         ]
     },
-    "CoordinatedOperationsStartMatching": {
+    "CoordinatedOperationsClickStartMatching": {
         "desc": "协同作战开始匹配",
         "recognition": {
             "type": "OCR",
@@ -171,7 +171,7 @@
         "next": [
             "CoordinatedOperationsReady",
             "CoordinatedOperationsMatchConfirm",
-            "CoordinatedOperationsConnectionInterrupted"
+            "CoordinatedOperationsConfirmConnectionInterrupted"
         ]
     },
     "CoordinatedOperationsReady": {
@@ -195,10 +195,10 @@
         },
         "timeout": 60000,
         "next": [
-            "BattleInBattle"
+            "BattleInBattleFlow"
         ]
     },
-    "CoordinatedOperationsConnectionInterrupted": {
+    "CoordinatedOperationsConfirmConnectionInterrupted": {
         "desc": "协同作战连接中断",
         "recognition": {
             "type": "TemplateMatch",

@@ -115,7 +115,7 @@
             "type": "Click"
         },
         "next": [
-            "[JumpBack]BattleStart",
+            "[JumpBack]BattleEntryFlow",
             "SimulationRoomEndSimulation"
         ]
     },

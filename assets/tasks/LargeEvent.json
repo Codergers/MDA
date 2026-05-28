@@ -24,7 +24,7 @@
                     "label": "$option.LargeEventTheme.StarAnis",
                     "option": ["LargeEventStarAnisMerchBagClick"],
                     "pipeline_override": {
-                        "LargeEventEntry": {
+                        "LargeEventEnterMainPage": {
                             "recognition": {
                                 "param": {
                                     "template": ["LargeEvent/StarAnis/StarAnisLogo.png"]

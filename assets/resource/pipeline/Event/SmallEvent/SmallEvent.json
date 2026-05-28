@@ -8,11 +8,11 @@
             }
         },
         "next": [
-            "SmallEventStart",
-            "[JumpBack]NavigationEnterHall"
+            "SmallEventHallFlow",
+            "[JumpBack]NavigationReturnHallFlow"
         ]
     },
-    "SmallEventStart": {
+    "SmallEventHallFlow": {
         "desc": "小活动开始",
         "recognition": {
             "type": "And",
@@ -23,11 +23,11 @@
             }
         },
         "next": [
-            "SmallEventEntry",
+            "SmallEventEnterMainPage",
             "CommonEndTask"
         ]
     },
-    "SmallEventEntry": {
+    "SmallEventEnterMainPage": {
         "desc": "小活动入口",
         "recognition": {
             "type": "TemplateMatch",
@@ -47,8 +47,8 @@
             "type": "Click"
         },
         "next": [
-            "SmallEventMainPageFlow",
-            "SmallEventEntry"
+            "SmallEventMainPageClickStoryArea",
+            "SmallEventEnterMainPage"
         ]
     },
     "SmallEventMainPageEntered": {
@@ -68,7 +68,7 @@
             }
         }
     },
-    "SmallEventMainPageFlow": {
+    "SmallEventMainPageClickStoryArea": {
         "desc": "活动地区流程",
         "recognition": {
             "type": "And",

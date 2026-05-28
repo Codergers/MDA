@@ -36,7 +36,7 @@
             "[JumpBack]LevelDChoose",
             "[JumpBack]LevelSChoose",
             "[JumpBack]InterceptionEXChoose",
-            "InterceptionBattle"
+            "InterceptionNormalBattleFlow"
         ]
     },
     "LevelDChoose": {
@@ -102,7 +102,7 @@
             "type": "Click"
         }
     },
-    "InterceptionBattle": {
+    "InterceptionNormalBattleFlow": {
         "desc": "拦截战战斗",
         "recognition": {
             "type": "OCR",
@@ -119,8 +119,8 @@
             }
         },
         "next": [
-            "BattleCannotBattle",
-            "[JumpBack]BattleStart"
+            "BattleCannotBattleBlocked",
+            "[JumpBack]BattleEntryFlow"
         ]
     }
 }

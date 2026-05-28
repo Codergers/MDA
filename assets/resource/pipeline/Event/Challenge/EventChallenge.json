@@ -17,11 +17,11 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "EventChallengeStage",
-            "EventClearStage"
+            "EventClickChallengeStage",
+            "EventClickClearedStage"
         ]
     },
-    "EventChallengeStage": {
+    "EventClickChallengeStage": {
         "desc": "未挑战的关卡",
         "recognition": {
             "type": "OCR",
@@ -44,11 +44,11 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "BattleStart",
-            "EventChallengeStage"
+            "BattleEntryFlow",
+            "EventClickChallengeStage"
         ]
     },
-    "EventClearStage": {
+    "EventClickClearedStage": {
         "desc": "已挑战的关卡",
         "recognition": {
             "type": "OCR",
@@ -71,8 +71,8 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "BattleStart",
-            "EventClearStage"
+            "BattleEntryFlow",
+            "EventClickClearedStage"
         ]
     },
     "EventChallengeStageVisible": {

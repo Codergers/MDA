@@ -6,7 +6,7 @@
             "type": "And",
             "param": {
                 "all_of": [
-                    "ChampionArena",
+                    "ChampionArenaVisible",
                     "ChampionArenaRedDotVisible"
                 ]
             }
@@ -128,10 +128,10 @@
         },
         "next": [
             "ArenaClickCheerUp",
-            "[JumpBack]ArenaCheerResult"
+            "[JumpBack]ArenaConfirmCheerResult"
         ]
     },
-    "ArenaCheerResult": {
+    "ArenaConfirmCheerResult": {
         "desc": "应援结果确认",
         "recognition": {
             "type": "OCR",
@@ -291,7 +291,7 @@
             }
         }
     },
-    "ChampionArena": {
+    "ChampionArenaVisible": {
         "desc": "冠军竞技场",
         "recognition": {
             "type": "OCR",

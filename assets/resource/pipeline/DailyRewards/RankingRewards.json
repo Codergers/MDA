@@ -3,11 +3,11 @@
         "desc": "排名奖励入口",
         "max_hit": 1,
         "next": [
-            "DailyRewardsRankingRewardsStart",
+            "DailyRewardsEnterRankingRewards",
             "CommonEndTask"
         ]
     },
-    "DailyRewardsRankingRewardsStart": {
+    "DailyRewardsEnterRankingRewards": {
         "desc": "排名奖励",
         "recognition": {
             "type": "And",
@@ -23,7 +23,7 @@
         },
         "next": [
             "DailyRewardsRankingRewardFlow",
-            "DailyRewardsRankingRewardsStart"
+            "DailyRewardsEnterRankingRewards"
         ]
     },
     "DailyRewardsRankingRewardVisible": {
@@ -55,7 +55,7 @@
         },
         "next": [
             "DailyRewardsClickRankingRewardRedDot",
-            "NavigationEnterHall"
+            "NavigationReturnHallFlow"
         ]
     },
     "DailyRewardsClickRankingRewardRedDot": {
@@ -111,7 +111,7 @@
             "type": "Click"
         },
         "next": [
-            "NavigationEnterHall"
+            "NavigationReturnHallFlow"
         ]
     }
 }

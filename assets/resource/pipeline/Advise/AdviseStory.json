@@ -1,5 +1,5 @@
 {
-    "AdviseStory": {
+    "AdviseStoryFlow": {
         "desc": "咨询剧情",
         "recognition": {
             "type": "And",

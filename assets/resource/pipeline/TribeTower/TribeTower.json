@@ -8,7 +8,7 @@
         },
         "next": [
             "ArkEnterTribeTower",
-            "[JumpBack]HallEnterArk"
+            "[JumpBack]NavigationEnterArkFlow"
         ]
     },
     "ArkEnterTribeTower": {
@@ -32,11 +32,11 @@
         },
         "post_wait_freezes": 1000,
         "next": [
-            "TribeTowerTask",
+            "TribeTowerTaskFlow",
             "ArkEnterTribeTower"
         ]
     },
-    "TribeTowerTask": {
+    "TribeTowerTaskFlow": {
         "desc": "无限之塔的任务",
         "recognition": {
             "type": "And",
@@ -116,9 +116,9 @@
     "TribeTowerBattleFlow": {
         "desc": "无限之塔战斗流程",
         "next": [
-            "[JumpBack]BattleStart",
+            "[JumpBack]BattleEntryFlow",
             "[JumpBack]CommonCloseSale",
-            "TribeTowerTask",
+            "TribeTowerTaskFlow",
             "[JumpBack]CommonGoBack"
         ]
     },

@@ -6,7 +6,7 @@
             "type": "And",
             "param": {
                 "all_of": [
-                    "RookieArena",
+                    "RookieArenaVisible",
                     "RookieArenaRedDotVisible"
                 ]
             }
@@ -88,7 +88,7 @@
             }
         }
     },
-    "RookieArena": {
+    "RookieArenaVisible": {
         "desc": "新人竞技场",
         "recognition": {
             "type": "OCR",

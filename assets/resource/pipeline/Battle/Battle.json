@@ -1,5 +1,5 @@
 {
-    "BattleStart": {
+    "BattleEntryFlow": {
         "desc": "进入战斗",
         "recognition": {
             "type": "And",
@@ -10,7 +10,7 @@
             }
         },
         "next": [
-            "ManualInterceptionBattle",
+            "ManualInterceptionBattleRequired",
             "[JumpBack]BattleCanQuickBattle",
             "[JumpBack]BattleCanBattle",
             "[JumpBack]BattleClosePage",
@@ -33,12 +33,12 @@
         },
         "post_wait_freezes": 500,
         "next": [
-            "MultipleBattle",
-            "MultipleBattleStart",
+            "MultipleBattleDialogFlow",
+            "MultipleBattleClickStartBattle",
             "BattleOperationComplete"
         ]
     },
-    "MultipleBattle": {
+    "MultipleBattleDialogFlow": {
         "desc": "多次战斗",
         "recognition": {
             "type": "OCR",
@@ -56,7 +56,7 @@
         },
         "next": [
             "MultipleBattleClickMax",
-            "MultipleBattleStart"
+            "MultipleBattleClickStartBattle"
         ]
     },
     "MultipleBattleClickMax": {
@@ -75,7 +75,7 @@
         },
         "next": [
             "MultipleBattleClickMax",
-            "MultipleBattleStart"
+            "MultipleBattleClickStartBattle"
         ]
     },
     "MultipleBattleClickMaxVisible": {
@@ -115,7 +115,7 @@
             }
         }
     },
-    "MultipleBattleStart": {
+    "MultipleBattleClickStartBattle": {
         "desc": "多次战斗点击进行战斗",
         "recognition": {
             "type": "OCR",
@@ -135,10 +135,10 @@
             "type": "Click"
         },
         "next": [
-            "BattleInBattle"
+            "BattleInBattleFlow"
         ]
     },
-    "BattleInBattle": {
+    "BattleInBattleFlow": {
         "desc": "战斗中",
         "timeout": 180000,
         "next": [
@@ -329,17 +329,17 @@
             "type": "Click"
         },
         "next": [
-            "BattleInBattle"
+            "BattleInBattleFlow"
         ]
     },
-    "BattleCannotBattle": {
+    "BattleCannotBattleBlocked": {
         "desc": "无法战斗检测",
         "recognition": {
             "type": "And",
             "param": {
                 "all_of": [
                     "BattleMainVisible",
-                    "BattleUnavailable"
+                    "BattleStartButtonBlocked"
                 ]
             }
         }
@@ -438,7 +438,7 @@
             }
         }
     },
-    "BattleUnavailable": {
+    "BattleStartButtonBlocked": {
         "desc": "无法战斗的标识",
         "recognition": {
             "type": "ColorMatch",

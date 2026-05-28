@@ -179,7 +179,7 @@
             "SimulationRoomConfirmBattleEnd",
             "SimulationRoomSelectBattle",
             "[JumpBack]SimulationRoomSelectBuff",
-            "[JumpBack]BattleStart"
+            "[JumpBack]BattleEntryFlow"
         ]
     },
     "SimulationRoomConfirmBattleEnd": {

@@ -3,11 +3,11 @@
         "desc": "任务收取入口",
         "max_hit": 1,
         "next": [
-            "DailyRewardsMissionStart",
+            "DailyRewardsEnterMission",
             "CommonEndTask"
         ]
     },
-    "DailyRewardsMissionStart": {
+    "DailyRewardsEnterMission": {
         "desc": "进入任务页面",
         "recognition": {
             "type": "TemplateMatch",
@@ -37,7 +37,7 @@
         "post_wait_freezes": 500,
         "next": [
             "DailyRewardsMissionFlow",
-            "DailyRewardsMissionStart"
+            "DailyRewardsEnterMission"
         ]
     },
     "DailyRewardsMissionFlow": {

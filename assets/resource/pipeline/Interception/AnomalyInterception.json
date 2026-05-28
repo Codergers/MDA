@@ -27,15 +27,15 @@
             }
         },
         "next": [
-            "InterceptionAnomalyKraken",
-            "InterceptionAnomalyMirrorContainer",
-            "InterceptionAnomalyIndivilia",
-            "InterceptionAnomalyHarvester",
-            "InterceptionAnomalyUltra",
+            "InterceptionAnomalyKrakenTargetFlow",
+            "InterceptionAnomalyMirrorContainerTargetFlow",
+            "InterceptionAnomalyIndiviliaTargetFlow",
+            "InterceptionAnomalyHarvesterTargetFlow",
+            "InterceptionAnomalyUltraTargetFlow",
             "[JumpBack]InterceptionNextAnomaly"
         ]
     },
-    "InterceptionAnomalyKraken": {
+    "InterceptionAnomalyKrakenTargetFlow": {
         "desc": "克拉肯",
         "enabled": false,
         "recognition": {
@@ -77,11 +77,11 @@
         },
         "post_wait_freezes": 200,
         "next": [
-            "BattleCannotBattle",
-            "[JumpBack]InterceptionChallengeBattle"
+            "BattleCannotBattleBlocked",
+            "[JumpBack]InterceptionChallengeBattleFlow"
         ]
     },
-    "InterceptionChallengeBattle": {
+    "InterceptionChallengeBattleFlow": {
         "desc": "挑战页面战斗",
         "recognition": {
             "type": "OCR",
@@ -98,11 +98,11 @@
             }
         },
         "next": [
-            "BattleStart",
+            "BattleEntryFlow",
             "CommonEndTask"
         ]
     },
-    "InterceptionAnomalyMirrorContainer": {
+    "InterceptionAnomalyMirrorContainerTargetFlow": {
         "desc": "镜像容器",
         "enabled": false,
         "recognition": {
@@ -123,7 +123,7 @@
             "InterceptionChallengeClick"
         ]
     },
-    "InterceptionAnomalyIndivilia": {
+    "InterceptionAnomalyIndiviliaTargetFlow": {
         "desc": "茵迪维利亚",
         "enabled": false,
         "recognition": {
@@ -144,7 +144,7 @@
             "InterceptionChallengeClick"
         ]
     },
-    "InterceptionAnomalyHarvester": {
+    "InterceptionAnomalyHarvesterTargetFlow": {
         "desc": "死神",
         "enabled": false,
         "recognition": {
@@ -165,7 +165,7 @@
             "InterceptionChallengeClick"
         ]
     },
-    "InterceptionAnomalyUltra": {
+    "InterceptionAnomalyUltraTargetFlow": {
         "desc": "过激派",
         "enabled": false,
         "recognition": {
