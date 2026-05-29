@@ -1,11 +1,9 @@
 package membership
 
 import (
-	"fmt"
 	"sync"
 	"time"
 
-	"github.com/1204244136/MDA/agent/go-service/pkg/i18n"
 	"github.com/1204244136/MDA/agent/go-service/pkg/maafocus"
 	maa "github.com/MaaXYZ/maa-framework-go/v4"
 	"github.com/rs/zerolog/log"
@@ -23,7 +21,10 @@ type RuntimeTracker struct {
 
 var _ maa.TaskerEventSink = &RuntimeTracker{}
 
-const quotaTickInterval = 15 * time.Second
+const (
+	quotaTickMinInterval = 5 * time.Second
+	quotaTickMaxInterval = 60 * time.Second
+)
 
 func (t *RuntimeTracker) OnTaskerTask(tasker *maa.Tasker, event maa.EventStatus, detail maa.TaskerTaskDetail) {
 	if detail.Entry == "MaaTaskerPostStop" {
@@ -73,7 +74,7 @@ func (t *RuntimeTracker) start(tasker *maa.Tasker, detail maa.TaskerTaskDetail) 
 		return
 	}
 
-	go t.tick(tasker, status, stopCh)
+	go t.tick(tasker, status, snapshot.RemainingSeconds, stopCh)
 }
 
 func (t *RuntimeTracker) finish() {
@@ -95,27 +96,48 @@ func (t *RuntimeTracker) finish() {
 	}
 }
 
-func (t *RuntimeTracker) tick(tasker *maa.Tasker, status *MembershipStatus, stopCh <-chan struct{}) {
-	ticker := time.NewTicker(quotaTickInterval)
-	defer ticker.Stop()
+func (t *RuntimeTracker) tick(tasker *maa.Tasker, status *MembershipStatus, remainingSeconds int64, stopCh <-chan struct{}) {
 	for {
+		timer := time.NewTimer(nextQuotaTickInterval(remainingSeconds))
 		select {
-		case <-ticker.C:
-			if t.consumeTick(tasker, status) {
+		case <-timer.C:
+			snapshot, done := t.consumeTick(tasker, status)
+			if done {
 				return
 			}
+			remainingSeconds = snapshot.RemainingSeconds
 		case <-stopCh:
+			if !timer.Stop() {
+				select {
+				case <-timer.C:
+				default:
+				}
+			}
 			return
 		}
 	}
 }
 
-func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatus) bool {
+func nextQuotaTickInterval(remainingSeconds int64) time.Duration {
+	if remainingSeconds <= 0 {
+		return quotaTickMinInterval
+	}
+	interval := time.Duration(remainingSeconds) * time.Second
+	if interval < quotaTickMinInterval {
+		return quotaTickMinInterval
+	}
+	if interval > quotaTickMaxInterval {
+		return quotaTickMaxInterval
+	}
+	return interval
+}
+
+func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatus) (QuotaSnapshot, bool) {
 	now := time.Now()
 	t.mu.Lock()
 	if !t.active {
 		t.mu.Unlock()
-		return true
+		return QuotaSnapshot{}, true
 	}
 	delta := now.Sub(t.last)
 	t.last = now
@@ -127,7 +149,7 @@ func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatu
 	snapshot, err := AddQuotaUsage(status, delta)
 	if err != nil {
 		log.Warn().Err(err).Msg("RuntimeTracker: failed to record quota usage")
-		return false
+		return QuotaSnapshot{}, false
 	}
 
 	log.Debug().
@@ -138,7 +160,7 @@ func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatu
 		Msg("RuntimeTracker: quota usage recorded")
 
 	if snapshot.RemainingSeconds > 0 || alreadyStopped {
-		return false
+		return snapshot, false
 	}
 
 	t.mu.Lock()
@@ -146,14 +168,9 @@ func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatu
 	t.mu.Unlock()
 	printQuotaExhausted(snapshot)
 	tasker.PostStop()
-	return false
+	return snapshot, false
 }
 
 func printQuotaExhausted(snapshot QuotaSnapshot) {
-	maafocus.PrintLargeContentTrimNewline(fmt.Sprintf(
-		i18n.T("tasker.membership_check.denied"),
-		snapshot.TierName,
-		FormatMinutes(snapshot.LimitSeconds),
-		snapshot.SponsorURL,
-	))
+	maafocus.PrintLargeContentTrimNewline(formatQuotaDeniedMessage(snapshot))
 }

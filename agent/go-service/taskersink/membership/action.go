@@ -58,6 +58,7 @@ func runRuntimeQuotaCheck(ctx *maa.Context) bool {
 		Int64("limit_seconds", snapshot.LimitSeconds).
 		Int64("used_seconds", snapshot.UsedSeconds).
 		Int64("remaining_seconds", snapshot.RemainingSeconds).
+		Int64("carried_debt_seconds", snapshot.CarriedDebtSeconds).
 		Bool("unlimited_runtime", snapshot.UnlimitedRuntime).
 		Str("business_date", snapshot.BusinessDate).
 		Msg("RuntimeQuotaCheck: quota evaluated")
@@ -74,6 +75,12 @@ func runRuntimeQuotaCheck(ctx *maa.Context) bool {
 				FormatMinutes(snapshot.RemainingSeconds),
 				FormatMinutes(snapshot.LimitSeconds),
 			))
+			if snapshot.CarriedDebtSeconds > 0 {
+				maafocus.Print(ctx, fmt.Sprintf(
+					i18n.T("tasker.membership_check.debt"),
+					FormatMinutes(snapshot.CarriedDebtSeconds),
+				))
+			}
 			maafocus.Print(ctx, fmt.Sprintf(
 				i18n.T("tasker.membership_check.sponsor"),
 				snapshot.SponsorURL,
@@ -82,11 +89,19 @@ func runRuntimeQuotaCheck(ctx *maa.Context) bool {
 		return true
 	}
 
-	maafocus.Print(ctx, fmt.Sprintf(
-		i18n.T("tasker.membership_check.denied"),
+	maafocus.Print(ctx, formatQuotaDeniedMessage(snapshot))
+	return false
+}
+
+func formatQuotaDeniedMessage(snapshot QuotaSnapshot) string {
+	messageKey := "tasker.membership_check.denied"
+	if snapshot.CarriedDebtSeconds > 0 {
+		messageKey = "tasker.membership_check.denied_debt"
+	}
+	return fmt.Sprintf(
+		i18n.T(messageKey),
 		snapshot.TierName,
 		FormatMinutes(snapshot.LimitSeconds),
 		snapshot.SponsorURL,
-	))
-	return false
+	)
 }
