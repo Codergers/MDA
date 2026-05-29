@@ -26,6 +26,8 @@
             "[JumpBack]CommonClosePage",
             "[JumpBack]RedDotClearCashShop",
             "[JumpBack]RedDotClearNotice",
+            "[JumpBack]RedDotClearSubMenu",
+            "[JumpBack]RedDotClearProfilePage",
             "CommonEndTask"
         ]
     }

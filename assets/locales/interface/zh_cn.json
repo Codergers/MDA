@@ -102,6 +102,8 @@
     "task.RedDotClear.description": "清除各类界面中的红点",
     "option.RedDotClearCashShop.label": "清除商店红点",
     "option.RedDotClearNotice.label": "清除公告红点",
+    "option.RedDotClearSubMenu.label": "清除子菜单红点",
+    "option.RedDotClearProfilePage.label": "清除个人资料页红点",
     "task.LargeEvent.label": "大活动 [3x]",
     "task.LargeEvent.description": "进入大活动界面，完成相关任务。（有SD小人的活动叫做大活动）",
     "option.LargeEventTheme.label": "活动主题",
