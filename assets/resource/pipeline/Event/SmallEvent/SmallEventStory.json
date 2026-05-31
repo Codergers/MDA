@@ -86,10 +86,10 @@
     "SmallEventEventStageQuickBattleFlow": {
         "desc": "小活动活动关卡页面快速战斗流程",
         "next": [
+            "SmallEventBattleBlocked",
             "SmallEventEventStageBattlePage",
             "[JumpBack]SmallEventStageNormalRepeatableClick",
-            "[JumpBack]SmallEventStageHardRepeatableClick",
-            "SmallEventBattleBlocked"
+            "[JumpBack]SmallEventStageHardRepeatableClick"
         ]
     },
     "SmallEventEventStageBattlePage": {

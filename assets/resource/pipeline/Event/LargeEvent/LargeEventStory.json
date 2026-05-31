@@ -144,11 +144,11 @@
     "LargeEventEventStageQuickBattleFlow": {
         "desc": "大活动活动关卡页面快速战斗流程",
         "next": [
+            "LargeEventBattleBlocked",
             "LargeEventEventStageBattlePage",
             "[JumpBack]LargeEventStory1StageRepeatableClick",
             "[JumpBack]LargeEventStory2StageNormalRepeatableClick",
-            "[JumpBack]LargeEventStory2StageHardRepeatableClick",
-            "LargeEventBattleBlocked"
+            "[JumpBack]LargeEventStory2StageHardRepeatableClick"
         ]
     },
     "LargeEventEventStageBattlePage": {
