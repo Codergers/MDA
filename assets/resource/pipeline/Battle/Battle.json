@@ -142,7 +142,6 @@
         "desc": "战斗中",
         "timeout": 180000,
         "next": [
-            "BattleEntryFlow", //适用于单人突击这种连续进入两次战斗的情况
             "[JumpBack]BattleClickAutoBurst",
             "[JumpBack]BattleClickAutoShoot",
             "[JumpBack]DialoguesSkipStory",
