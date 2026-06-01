@@ -15,11 +15,14 @@
                 {
                     "name": "Shop",
                     "option": {
+                        "CommonShop": "Yes",
                         "CommonShopFreeGoods": "Yes",
                         "CommonShopCoreDustCase": "No",
+                        "ArenaShop": "Yes",
                         "ArenaShopItemList": [
                             "ArenaShopElectricCodeManual"
                         ],
+                        "RecyclingShop": "Yes",
                         "RecyclingShopList": [
                             "Gem",
                             "UpgradeMaterials"
