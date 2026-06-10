@@ -8,7 +8,8 @@
             "option": [
                 "AccountNurturingCharacterBreakthrough",
                 "AccountNurturingSynchroDeviceEnhance",
-                "AccountNurturingCubeEnhancement"
+                "AccountNurturingCubeEnhancement",
+                "AccountNurturingRecycleRoomUpgrade"
             ],
             "group": [
                 "utility"
@@ -84,6 +85,29 @@
                     "name": "No",
                     "pipeline_override": {
                         "AccountNurturingCubeEnhancement": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "AccountNurturingRecycleRoomUpgrade": {
+            "type": "switch",
+            "default_case": "Yes",
+            "label": "$option.AccountNurturingRecycleRoomUpgrade.label",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "AccountNurturingRecycleRoomUpgrade": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AccountNurturingRecycleRoomUpgrade": {
                             "enabled": false
                         }
                     }
