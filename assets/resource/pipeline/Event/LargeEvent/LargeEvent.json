@@ -100,8 +100,29 @@
         "desc": "返回活动地区",
         "next": [
             "LargeEventMainPageEntered",
+            "[JumpBack]LargeEventFieldChanged",
             "[JumpBack]DialoguesSkipStory",
             "[JumpBack]CommonGoBack"
+        ]
+    },
+    "LargeEventFieldChanged": {
+        "desc": "活动地区区域变化",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    357,
+                    226,
+                    562,
+                    243
+                ],
+                "expected": [
+                    ".*区域变化.*"
+                ]
+            }
+        },
+        "next": [
+            "CommonClickBlank"
         ]
     }
 }
