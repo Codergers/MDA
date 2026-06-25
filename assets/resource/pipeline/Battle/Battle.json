@@ -338,6 +338,7 @@
         "desc": "战斗中",
         "timeout": 180000,
         "next": [
+            "[JumpBack]BattleSkipBossCutscene",
             "[JumpBack]BattleClickAutoBurst",
             "[JumpBack]BattleClickAutoShoot",
             "[JumpBack]DialoguesSkipStory",
@@ -346,6 +347,31 @@
             "[JumpBack]BattleFieldChanged",
             "BattleConfirmOperationComplete",
             "BattleOperationFailed"
+        ]
+    },
+    "BattleSkipBossCutscene": {
+        "desc": "跳过Boss过场动画",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    602,
+                    282,
+                    72,
+                    22
+                ],
+                "expected": [
+                    ".*RNI.*" //WARNING
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "CommonConfirmAction",
+            "BattleSkipBossCutscene", //兜底
+            "CommonEndTask"
         ]
     },
     "BattleClickAutoBurst": {
