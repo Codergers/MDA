@@ -99,8 +99,6 @@ func (t *RuntimeTracker) start(tasker *maa.Tasker, detail maa.TaskerTaskDetail) 
 	status := GetMembershipStatus()
 	if status.VerificationUnavailable {
 		printMembershipVerificationUnavailable()
-		tasker.PostStop()
-		return
 	}
 	route := quotaRouteForEntry(detail.Entry)
 	snapshot, ok, err := EnsureQuotaRouteAvailable(status, route)
@@ -175,10 +173,6 @@ func (t *RuntimeTracker) finish() {
 
 	if status == nil {
 		status = GetMembershipStatus()
-		if status.VerificationUnavailable {
-			log.Warn().Msg("RuntimeTracker: skipped final quota usage flush because membership verification is unavailable")
-			return
-		}
 	}
 	if _, err := AddQuotaRouteUsageSeconds(status, route, billableSeconds); err != nil {
 		log.Warn().Err(err).Msg("RuntimeTracker: failed to flush final quota usage")
