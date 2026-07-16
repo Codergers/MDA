@@ -125,10 +125,13 @@ type MembershipStatus struct {
 }
 
 var (
-	cachedStatus     *MembershipStatus
-	cachedStatusMu   sync.RWMutex
-	cachedStatusTime time.Time
-	cachedDeviceCode DeviceCodeV7
+	cachedStatus      *MembershipStatus
+	cachedStatusMu    sync.RWMutex
+	cachedStatusTime  time.Time
+	membershipCheckMu sync.Mutex
+	cachedDeviceCode  DeviceCodeV7
+	deviceCodeCached  bool
+	deviceCodeMu      sync.Mutex
 )
 
 const (
@@ -144,15 +147,41 @@ var (
 
 // GetMembershipStatus returns the current membership status, using cache if available.
 func GetMembershipStatus() *MembershipStatus {
-	cachedStatusMu.RLock()
-	if cachedStatus != nil && time.Since(cachedStatusTime) < cacheExpiry {
-		status := cachedStatus
-		cachedStatusMu.RUnlock()
+	if status := getCachedStatus(); status != nil {
 		return status
 	}
-	cachedStatusMu.RUnlock()
+
+	membershipCheckMu.Lock()
+	defer membershipCheckMu.Unlock()
+
+	if status := getCachedStatus(); status != nil {
+		return status
+	}
 
 	return checkMembership()
+}
+
+func getCachedStatus() *MembershipStatus {
+	cachedStatusMu.RLock()
+	defer cachedStatusMu.RUnlock()
+	if cachedStatus == nil || time.Since(cachedStatusTime) >= cacheExpiry {
+		return nil
+	}
+	return cachedStatus
+}
+
+func getDeviceCode() DeviceCodeV7 {
+	deviceCodeMu.Lock()
+	defer deviceCodeMu.Unlock()
+	if !deviceCodeCached {
+		deviceCode := generateDeviceCodeV7()
+		if deviceCode == (DeviceCodeV7{}) {
+			return deviceCode
+		}
+		cachedDeviceCode = deviceCode
+		deviceCodeCached = true
+	}
+	return cachedDeviceCode
 }
 
 // checkMembership performs the full membership check flow.
@@ -177,8 +206,7 @@ func checkMembership() *MembershipStatus {
 		}
 	}
 
-	deviceCode := generateDeviceCodeV7()
-	cachedDeviceCode = deviceCode
+	deviceCode := getDeviceCode()
 
 	defaultStatus := &MembershipStatus{
 		Tier:                        "Orange Free",
@@ -227,6 +255,7 @@ func checkMembership() *MembershipStatus {
 
 	if !response.Matched {
 		log.Info().Int("score", response.Score).Msg("No matching member device found, using Orange Free quota")
+		cacheStatus(defaultStatus)
 		return defaultStatus
 	}
 
