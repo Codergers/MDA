@@ -143,7 +143,9 @@
                                 "param": {
                                     "template": [
                                         "LargeEvent/WaveToYou/WaveToYouStory1Stage.png",
-                                        "LargeEvent/WaveToYou/WaveToYouStory2StageNormal.png"
+                                        "LargeEvent/WaveToYou/WaveToYouStory2StageNormal.png",
+                                        "LargeEvent/WaveToYou/WaveToYouStory2StageHard.png",
+                                        "LargeEvent/WaveToYou/WaveToYouStory2StageHardSP.png"
                                     ]
                                 }
                             }
@@ -153,7 +155,8 @@
                                 "param": {
                                     "template": [
                                         "LargeEvent/WaveToYou/WaveToYouStory1StageRepeatable.png",
-                                        "LargeEvent/WaveToYou/WaveToYouStory2StageNormalRepeatable.png"
+                                        "LargeEvent/WaveToYou/WaveToYouStory2StageNormalRepeatable.png",
+                                        "LargeEvent/WaveToYou/WaveToYouStory2StageHardRepeatable.png"
                                     ]
                                 }
                             }
