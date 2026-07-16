@@ -68,8 +68,10 @@ type QuotaSnapshot struct {
 
 var quotaMu sync.Mutex
 
+var beijingLocation = time.FixedZone("Asia/Shanghai", 8*60*60)
+
 func quotaBusinessDate(now time.Time) string {
-	return now.Add(-4 * time.Hour).Format("2006-01-02")
+	return now.In(beijingLocation).Add(-4 * time.Hour).Format("2006-01-02")
 }
 
 func quotaSpecialPeriodKey(status *MembershipStatus) string {

@@ -33,7 +33,7 @@ Details are as follows:
 
 - **All features available**: Free users can use all tasks. Tasks are no longer divided into member-only tasks with the 🍊 marker.
 - **Daily runtime quota**: Different membership tiers provide different daily runtime limits. The default free tier is **Orange Free**, with **10 minutes** of runtime per day.
-- **Quota reset time**: Daily runtime quota refreshes by tier at **4:00 AM** every day.
+- **Quota reset time**: Daily runtime quota refreshes by tier at **4:00 AM Beijing Time (UTC+8)** every day.
 - **Sponsorship Method**: When running tasks, the run log displays your current tier, today's remaining quota, and the device binding/subscription link. You can sponsor the project through that link.
 
 Thank you to all contributors for their efforts, and to every user for their understanding and support! Your sponsorship is the biggest motivation for me to continuously optimize MDA.
