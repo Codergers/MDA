@@ -243,7 +243,16 @@ func (t *RuntimeTracker) consumeTick(tasker *maa.Tasker, status *MembershipStatu
 	snapshot, err := AddQuotaRouteUsageSeconds(status, route, billableSeconds)
 	if err != nil {
 		log.Warn().Err(err).Msg("RuntimeTracker: failed to record quota usage")
-		return QuotaSnapshot{}, false
+		t.mu.Lock()
+		shouldStop := t.active && t.generation == generation
+		if shouldStop {
+			t.stopped = true
+		}
+		t.mu.Unlock()
+		if shouldStop {
+			tasker.PostStop()
+		}
+		return QuotaSnapshot{}, true
 	}
 
 	log.Debug().
